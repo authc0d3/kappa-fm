@@ -1,7 +1,12 @@
 {
-  "name": "kappa-song",
+  "name": "kappa-fm",
+  "author": {
+    "name": "Antonio González Garrido",
+    "url": "https://programadorweb.dev"
+  },
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "homepage": "https://authc0d3.github.io/kappa-fm/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
