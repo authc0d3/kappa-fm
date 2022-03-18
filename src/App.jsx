@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import dog from "./dog.gif";
+import { DancingDog, Link, Member, Subtitle, Title } from "./components";
 
 const initDate = dayjs("2022-03-01");
 
@@ -48,29 +48,21 @@ function App() {
 
   return (
     <>
-      <h1>
+      <Title>
         📻 Kappa <span>FM</span>
-      </h1>
-      <hr />
-      {todayMember ? (
+      </Title>
+      <Subtitle>
+        {todayMember
+          ? "La canción de hoy le toca a..."
+          : "Pero... ¿Que haces aquí hoy?"}
+      </Subtitle>
+      <Member name={todayMember?.name} />
+      {todayMember && (
         <>
-          <h4>La canción de hoy le toca a...</h4>
-          <h2 className="text-2xl">🎶 {todayMember?.name} 🎉</h2>
-          <div className="dog">
-            <img src={dog} alt="music" />
-          </div>
-          <a
-            href="https://youtube.com/"
-            target="_blank"
-            className="youtube-btn"
-          >
+          <DancingDog />
+          <Link href="https://youtube.com/" target="_blank">
             🔍 Ir a youtube
-          </a>
-        </>
-      ) : (
-        <>
-          <h4>Pero... ¿Que haces aquí hoy?</h4>
-          <h2 className="text-2xl">Vuelve el lunes 😉</h2>
+          </Link>
         </>
       )}
     </>
