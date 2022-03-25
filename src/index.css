@@ -61,17 +61,30 @@ h2 .memberName {
   border-radius: 15px;
 }
 
-.youtube-btn {
-  display: inline-block;
-  background-color: #ff0000;
-  color: #fff;
+.btn {
+  display: block;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 8px 12px;
   border-radius: 0.5rem;
   transition: all 0.3s ease-in-out;
 }
 
-.youtube-btn:hover {
+.btn-danger {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.btn-danger:hover {
   background-color: #d10e0e;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-success {
+  background-color: #33b83a;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #238628;
   transition: all 0.3s ease-in-out;
 }

@@ -1,50 +1,18 @@
-import dayjs from "dayjs";
+import { useState, useEffect } from "react";
 import { DancingDog, Link, Member, Subtitle, Title } from "./components";
+import { initializeMemebers, getMemberByDate } from "./utils";
 
-const initDate = dayjs("2022-03-01");
-
-const teamMembers = [
-  { name: "Dani", initDate: initDate },
-  { name: "Tony Paulaner", initDate: initDate.add(1, "d") },
-  { name: "Irene", initDate: initDate.add(2, "d") },
-  { name: "David", initDate: initDate.add(3, "d") },
-  { name: "Miguel Ángel", initDate: initDate.add(6, "d") },
-  { name: "Natacha", initDate: initDate.add(7, "d") },
-  { name: "Tatiana", initDate: initDate.add(8, "d") },
-];
-
-function calcWeekendDays(init, end) {
-  let count = 0;
-  let current = init;
-  while (current.isBefore(end)) {
-    if (current.day() === 0 || current.day() === 6) count++;
-    current = current.add(1, "d");
-  }
-  return count;
-}
-
-function getMemberByDate(date) {
-  const today = dayjs(date || dayjs().format("YYYY-MM-DD"));
-  if (today.day() === 0 || today.day() === 6) return undefined;
-
-  let memberByDate;
-  teamMembers.every((member) => {
-    const diffFromInit = Math.floor(
-      Math.abs(today.diff(member.initDate, "day")) -
-        calcWeekendDays(member.initDate, today)
-    );
-    if (diffFromInit % teamMembers.length === 0) {
-      memberByDate = member;
-      return false;
-    }
-    return true;
-  });
-
-  return memberByDate;
-}
+const members = initializeMemebers(
+  import.meta.env.VITE_MEMBERS,
+  import.meta.env.VITE_INIT_DATE
+);
 
 function App() {
-  const todayMember = getMemberByDate();
+  const [member, setMember] = useState();
+
+  useEffect(() => {
+    setMember(getMemberByDate(members));
+  }, []);
 
   return (
     <>
@@ -52,16 +20,27 @@ function App() {
         📻 Kappa <span>FM</span>
       </Title>
       <Subtitle>
-        {todayMember
+        {member
           ? "La canción de hoy le toca a..."
           : "Pero... ¿Que haces aquí hoy?"}
       </Subtitle>
-      <Member name={todayMember?.name} />
-      {todayMember && (
+      <Member name={member?.name} />
+      {member && (
         <>
           <DancingDog />
-          <Link href="https://youtube.com/" target="_blank">
+          <Link
+            href="https://youtube.com/"
+            target="_blank"
+            style={{ marginBottom: "10px" }}
+          >
             🔍 Ir a youtube
+          </Link>
+          <Link
+            href="https://open.spotify.com/playlist/6eeT7daACvLsHCDZEMe4hv?si=1d96c1eaa89c42b7"
+            target="_blank"
+            color="success"
+          >
+            🎵 Spotify Kappa
           </Link>
         </>
       )}

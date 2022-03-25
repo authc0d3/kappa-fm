@@ -5,16 +5,18 @@ const variants = {
   visible: { opacity: 1, y: 0 },
 };
 
-function Link({ href, target, children }) {
+function Link({ href, target, color, style, children }) {
+  const className = `btn btn-${color || "danger"}`;
   return (
     <motion.a
       href={href}
       target={target || "_self"}
-      className="youtube-btn"
+      className={className}
       initial="hide"
       animate="visible"
       variants={variants}
       transition={{ duration: 0.5, delay: 2 }}
+      style={style}
     >
       {children}
     </motion.a>
