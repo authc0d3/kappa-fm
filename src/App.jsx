@@ -1,19 +1,8 @@
-import { useState, useEffect } from "react";
 import { DancingDog, Link, Member, Subtitle, Title } from "./components";
-import { initializeMemebers, getMemberByDate } from "./utils";
-
-const members = initializeMemebers(
-  import.meta.env.VITE_MEMBERS,
-  import.meta.env.VITE_INIT_DATE
-);
+import { useCurrentMember } from "./hooks";
 
 function App() {
-  const [member, setMember] = useState();
-
-  useEffect(() => {
-    setMember(getMemberByDate(members));
-  }, []);
-
+  const member = useCurrentMember();
   return (
     <>
       <Title>
