@@ -1,4 +1,4 @@
-import { DancingDog, Link, Member, Subtitle, Title } from "./components";
+import { RandomImage, Link, Member, Subtitle, Title } from "./components";
 import { useCurrentMember } from "./hooks";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Member name={member?.name} />
       {member && (
         <>
-          <DancingDog />
+          <RandomImage />
           <Link
             href="https://youtube.com/"
             target="_blank"
