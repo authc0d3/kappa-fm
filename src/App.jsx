@@ -14,7 +14,7 @@ function App() {
       initial="hide"
       animate="visible"
       variants={variants}
-      transition={{ duration: 1, delay: 1 }}
+      transition={{ duration: 1 }}
       className="card"
     >
       <Title>
