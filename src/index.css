@@ -12,7 +12,28 @@ body {
   justify-content: center;
   height: 100vh;
   text-align: center;
-  background-color: #f5f5f5;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -75,7 +96,7 @@ h2 .memberName {
 }
 
 .btn-danger:hover {
-  background-color: #d10e0e;
+  background-color: #ff4d4d;
   transition: all 0.3s ease-in-out;
 }
 
@@ -85,6 +106,6 @@ h2 .memberName {
 }
 
 .btn-success:hover {
-  background-color: #238628;
+  background-color: rgb(80, 207, 87);
   transition: all 0.3s ease-in-out;
 }

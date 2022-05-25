@@ -1,10 +1,22 @@
+import { motion } from "framer-motion";
 import { RandomImage, Link, Member, Subtitle, Title } from "./components";
 import { useCurrentMember } from "./hooks";
+
+const variants = {
+  hide: { opacity: 0, scale: 0, rotate: 45 },
+  visible: { opacity: 1, scale: 1, rotate: 0 },
+};
 
 function App() {
   const member = useCurrentMember();
   return (
-    <>
+    <motion.div
+      initial="hide"
+      animate="visible"
+      variants={variants}
+      transition={{ duration: 1, delay: 1 }}
+      className="card"
+    >
       <Title>
         📻 Kappa <span>FM</span>
       </Title>
@@ -33,7 +45,7 @@ function App() {
           </Link>
         </>
       )}
-    </>
+    </motion.div>
   );
 }
 
