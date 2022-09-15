@@ -20,7 +20,7 @@ function DancingDog({ name }) {
       variants={variants}
       transition={{ duration: 1, delay: 1.5 }}
     >
-      <img src={randomImage} alt="music" />
+      <img src={randomImage} alt="music" data-atropos-offset="-5" />
     </motion.div>
   );
 }

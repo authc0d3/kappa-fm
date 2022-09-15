@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 function MemberName({ name }) {
   return (
-    <div className="memberName">
+    <div className="memberName" data-atropos-offset="-5">
       <motion.div
         animate={{
           scale: [1, 1.2, 1, 1.2, 1],
